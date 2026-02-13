@@ -1,37 +1,40 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main() {
-    int num;
-    int i;
-    int esPrimo = 1;
+int main()
+{
+    int E,M;
+    float P;
 
-    printf("Ingresa un numero: ");
-    scanf("%d", &num);
 
-    if (num % 2 == 0) {
-        printf("El numero es PAR\n");
-    } else {
-        printf("El numero es IMPAR\n");
+    printf("Ingresa tu edad:");
+    scanf("%d", &E);
+
+    printf("Ingresa tu promedio actual: \n");
+    scanf("%f", &P);
+
+    printf("Ingresa la cantidad de materias reprobadas: \n");
+    scanf("%d", &M);
+
+
+
+    if (P >= 90.0 && M == 0){
+        printf("FELICIDADES obtuviste la beca");
+
     }
 
-    if (num <= 1) {
-        esPrimo = 0;
-    } else {
-        i = 2;
-        while (i <= num / 2 && esPrimo == 1) {
-            if (num % i == 0) {
-                esPrimo = 0;
-            }
-            i++;
-        }
+    else{
+
+       if (M <= 2){
+        printf("Puedes reinscribirte para obtener la beca\n");
+
     }
 
-    if (esPrimo == 1) {
-        printf("El numero es PRIMO\n");
-    } else {
-        printf("El numero NO es primo\n");
+    else{
+        printf("Estas en situacion critica\n");
     }
+    }
+
 
     return 0;
 }
