@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#include <stdio.h>
+
+int main()
+{
+    int N;
+    int i;
+
+    printf("\nIngrese la cantidad de datos que requiere: "); //El usuario registra la cantidad que requiere y seran guardados en N
+    scanf("%d", &N);
+
+    float temp[N];
+
+    printf("\n--- Ingrese las temperaturas ---\n");
+
+    for (i = 0; i < N; i++) {
+        printf("Ingrese la temperatura %d: ", i + 1);  //Se ingresan las temperaturas de uno en uno
+        scanf("%f", &temp[i]);
+    }
+
+    printf("\nLas temperaturas son:\n");  // Se imprimen las temperaturas
+
+    for (i = 0; i < N; i++) {
+        printf("Temp %d: %.2f\n", i + 1, temp[i]);
+    }
+
+    return 0;
+}
+
+
