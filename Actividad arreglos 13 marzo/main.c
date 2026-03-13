@@ -1,0 +1,189 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main() {
+
+    char nombrealumno1[20], nombrealumno2[20];
+    char alumno1[20], alumno2[20];
+    char jugadores[3][20];
+    char lista[5][16];
+    int o, L;
+    char nombre_equipo[150];
+    char jugador[4][20];
+
+    do {
+
+        printf("\n\n--- MENU DE CADENAS ---");
+        printf("\n1. Ejemplo simple (scanf)");
+        printf("\n2. Lectura con fgets");
+        printf("\n3. Arreglo de jugadores");
+        printf("\n4. Mostrar longitud (strlen)");
+        printf("\n5. Concatenacion (strcat)");
+        printf("\n6. Comparar nombres (strcmp)");
+        printf("\n7. Buscar letra (strchr)");
+        printf("\n8. Salir");
+        printf("\nSeleccione una opcion: ");
+        scanf("%d",&o);
+
+        while(getchar()!='\n');
+
+        switch(o){
+
+        case 1:
+
+            printf("\n--- EJEMPLO 1 ---\n");
+
+            printf("Ingresa nombre 1: ");
+            scanf("%19s",nombrealumno1);
+
+            printf("Ingresa nombre 2: ");
+            scanf("%19s",nombrealumno2);
+
+            printf("Guardados: %s y %s\n",nombrealumno1,nombrealumno2);
+
+            while(getchar()!='\n');
+
+        break;
+
+        case 2:
+
+            printf("\n--- EJEMPLO 2 ---\n");
+
+            printf("Nombre completo 1: ");
+            fgets(alumno1,sizeof(alumno1),stdin);
+            alumno1[strcspn(alumno1,"\n")] = 0;
+
+            printf("Nombre completo 2: ");
+            fgets(alumno2,sizeof(alumno2),stdin);
+            alumno2[strcspn(alumno2,"\n")] = 0;
+
+            printf("Resultado: %s | %s\n",alumno1,alumno2);
+
+        break;
+
+        case 3:
+
+            printf("\n--- EJEMPLO 3 ---\n");
+
+            for(int i=0;i<3;i++){
+
+                printf("Jugador %d: ",i+1);
+                fgets(jugadores[i],sizeof(jugadores[i]),stdin);
+                jugadores[i][strcspn(jugadores[i],"\n")] = 0;
+
+            }
+
+            printf("\nJugadores guardados:\n");
+
+            for(int i=0;i<3;i++)
+                printf("%s\n",jugadores[i]);
+
+        break;
+
+        case 4:
+
+            printf("\n--- EJEMPLO 4 LONGITUD ---\n");
+
+            for(int i=0;i<5;i++){
+
+                printf("Ingresa nombre %d: ",i+1);
+                fgets(lista[i],sizeof(lista[i]),stdin);
+                lista[i][strcspn(lista[i],"\n")] = 0;
+
+            }
+
+            printf("\nResultados:\n");
+
+            for(int i=0;i<5;i++){
+
+                L = strlen(lista[i]);
+                printf("%s -> %d caracteres\n",lista[i],L);
+
+            }
+
+        break;
+
+        case 5:
+
+            printf("\n--- EJEMPLO 5 CONCATENACION ---\n");
+
+            for(int i=0;i<4;i++){
+
+                printf("Jugador %d: ",i+1);
+                fgets(jugador[i],sizeof(jugador[i]),stdin);
+                jugador[i][strcspn(jugador[i],"\n")] = 0;
+
+            }
+
+            strcpy(nombre_equipo,"Equipo Linux: ");
+
+            strcat(nombre_equipo,jugador[0]);
+            strcat(nombre_equipo,", ");
+            strcat(nombre_equipo,jugador[1]);
+            strcat(nombre_equipo,", ");
+            strcat(nombre_equipo,jugador[2]);
+            strcat(nombre_equipo," y ");
+            strcat(nombre_equipo,jugador[3]);
+
+            printf("\nEquipo completo:\n%s\n",nombre_equipo);
+
+        break;
+
+        case 6:
+
+            printf("\n--- COMPARAR NOMBRES (strcmp) ---\n");
+
+            printf("Nombre 1: ");
+            fgets(alumno1,sizeof(alumno1),stdin);
+            alumno1[strcspn(alumno1,"\n")] = 0;
+
+            printf("Nombre 2: ");
+            fgets(alumno2,sizeof(alumno2),stdin);
+            alumno2[strcspn(alumno2,"\n")] = 0;
+
+            if(strcmp(alumno1,alumno2)==0)
+                printf("Los nombres son iguales\n");
+            else
+                printf("Los nombres son diferentes\n");
+
+        break;
+
+        case 7:
+
+            printf("\n--- BUSCAR LETRA (strchr) ---\n");
+
+            char letra;
+
+            printf("Ingresa un nombre: ");
+            fgets(alumno1,sizeof(alumno1),stdin);
+            alumno1[strcspn(alumno1,"\n")] = 0;
+
+            printf("Letra a buscar: ");
+            scanf("%c",&letra);
+
+            if(strchr(alumno1,letra))
+                printf("La letra SI existe en el nombre\n");
+            else
+                printf("La letra NO existe\n");
+
+            while(getchar()!='\n');
+
+        break;
+
+        case 8:
+
+            printf("Saliendo del programa...\n");
+
+        break;
+
+        default:
+
+            printf("Opcion no valida\n");
+
+        }
+
+    }while(o!=8);
+
+return 0;
+}
