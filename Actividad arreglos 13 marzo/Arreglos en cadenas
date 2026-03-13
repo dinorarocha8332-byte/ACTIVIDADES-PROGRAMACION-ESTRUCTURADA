@@ -1,0 +1,85 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main() {
+    char nombrealumno1[20], nombrealumno2[20];
+    char alumno1[20], alumno2[20];
+    char jugadores[3][20];
+    char lista[5][16];
+    int o, L;
+
+    do {
+        printf("\n\n--- MENU DE CADENAS ---");
+        printf("\n 1. Ejemplo simple (scanf)");
+        printf("\n 2. Lectura con fgets");
+        printf("\n 3. Arreglo de jugadores");
+        printf("\n 4. Mostrar longitud");
+        printf("\n 5. Salir");
+        printf("\n Seleccione una opcion: ");
+        scanf("%d", &o);
+
+        // LIMPIEZA CRUCIAL: Quita el Enter del buffer para que los fgets no fallen
+        while (getchar() != '\n');
+
+        switch (o) {
+            case 1:
+                printf("\n--- EJEMPLO 1 ---\n");
+                printf("Ingresa nombre 1: ");
+                scanf("%19s", nombrealumno1);
+                printf("Ingresa nombre 2: ");
+                scanf("%19s", nombrealumno2);
+                printf("Guardados: %s y %s\n", nombrealumno1, nombrealumno2);
+                while (getchar() != '\n'); // Limpiar después de scanf
+                break;
+
+            case 2:
+                printf("\n--- EJEMPLO 2 ---\n");
+                printf("Nombre completo 1: ");
+                fgets(alumno1, sizeof(alumno1), stdin);
+                alumno1[strcspn(alumno1, "\n")] = 0;
+                printf("Resultado: %s\n", alumno1);
+                break;
+
+            case 3:
+                printf("\n--- EJEMPLO 3 ---\n");
+                for (int i = 0; i < 3; i++) {
+                    printf("Jugador %d: ", i + 1);
+                    fgets(jugadores[i], sizeof(jugadores[i]), stdin);
+                    jugadores[i][strcspn(jugadores[i], "\n")] = 0;
+                }
+                break;
+
+case 4:
+    printf("\n--- EJEMPLO 4: Longitudes de la lista ---\n");
+
+
+    for (int i = 0; i < 5; i++) {
+        printf("Ingresa el nombre %d: ", i + 1);
+        fgets(lista[i], sizeof(lista[i]), stdin);
+        
+   
+        lista[i][strcspn(lista[i], "\n")] = 0;
+    }
+
+
+    printf("\nResultados de longitudes:");
+    printf("\n-------------------------");
+    for (int i = 0; i < 5; i++) {
+        L = strlen(lista[i]);
+        printf("\n[%d] Nombre: %-10s | Longitud: %d", i + 1, lista[i], L);
+    }
+    printf("\n-------------------------");
+    break;
+
+            case 5:
+                printf("Saliendo del programa...\n");
+                break;
+
+            default:
+                printf("Opcion no valida.\n");
+        }
+    } while (o != 5);
+
+    return 0;
+}
