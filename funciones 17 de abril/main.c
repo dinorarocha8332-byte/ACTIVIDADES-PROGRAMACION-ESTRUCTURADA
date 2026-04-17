@@ -1,0 +1,74 @@
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    /*FUNCIONES: Son elementos basicos y principales de la programacion estructurada
+    ,las funciones permiten dividir un programa grande en partes mas pequeñas y gestionables
+    para declarar funciones se declaran asi:
+
+    tipo nombre_funcion(parametros)
+    {
+        instrucciones;
+        return valor;
+    }
+    */
+
+
+    //FUNCIONES
+    int suma(int a, int b)
+    {
+        return a + b;
+    }
+    void cambiar(int x){
+        x=100;
+    }
+
+    void mostrar(int v[], int n)
+    {
+    int i;
+    for(i=0;i<n; i++){
+    printf("%d", v[i]);
+    }
+
+    }
+
+
+    void mostrarMatriz(int m[2][3])
+    {
+    int i,j;
+        for(i=0;i<2; i++){
+            for(j=0; j<3; j++){
+                 printf("%d", m[i][j]);
+            }
+            printf("\n");
+        }
+
+    }
+
+    void duplicar (int *x){
+    *x = (*x)*2;
+    }
+
+//CODIGO
+    int resultado = suma(4, 3);
+    printf("El resultado de la suma es: %d\n", resfultado);
+
+    /*Paso de parametros por valor: Cuando se envia una variable, la funcion recibe una copia(Tambien
+    se le conoce como pase por copia*/
+     int c = 5;
+     cambiar(c);
+     printf("%d",c);
+
+     int datos [5] = {1,2,3,4,5,};
+     mostrar (datos,5);
+
+     int matriz [2][3] = {{1,2,3},{5,6,7}};
+     mostrarMatriz(matriz);
+
+     int n=4;
+    duplicar(&n)
+    printf("%d", n);
+
+
+    return 0;
+}
